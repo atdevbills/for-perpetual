@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Perpetual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <audio id="audio" src="song.mp3" loop preload="none"></audio>
+
+  <!-- Photo + dark overlay sit behind everything -->
+  <div class="backdrop"></div>
+
+  <main>
+
+    <!-- SCREEN 1: Welcome -->
+    <section id="welcome" class="screen active">
+      <p class="lead">A letter, written for</p>
+      <h1 class="name">Perpetual</h1>
+      <div class="ornament" aria-hidden="true">❦</div>
+      <button id="openBtn" class="btn btn-gold">Open your letter</button>
+      <p class="small">Tap the button. Music will play softly.</p>
+    </section>
+
+    <!-- SCREEN 2: The letter -->
+    <section id="letter" class="screen">
+      <article class="card">
+        <h2 class="salutation">Dear Perpetual,</h2>
+
+        <p>From the moment I met you, I knew there was something truly special about you. Your smile lights up my world, and your kindness and warmth have touched my heart in ways I never thought possible.</p>
+
+        <p>Every moment we spend together feels like a beautiful dream, and I cannot imagine my life without you in it. You make me a better person, and I want to spend my life making you as happy as you make me.</p>
+
+        <p class="question">Will you do me the honour of being my partner, my confidant, and my forever love?<br>Perpetual, will you be my girlfriend?</p>
+
+        <div class="actions">
+          <button id="yesBtn" class="btn btn-gold">Yes</button>
+          <button id="noBtn" class="btn btn-ghost">Let me think</button>
+        </div>
+        <p id="noReply" class="small" aria-live="polite"></p>
+      </article>
+
+      <button id="backBtn" class="link">Back</button>
+    </section>
+
+    <!-- SCREEN 3: She said yes -->
+    <section id="yes" class="screen">
+      <article class="card">
+        <h2 class="name name-small">Thank you</h2>
+        <div class="ornament" aria-hidden="true">❦</div>
+        <p>You have made me the happiest person alive. This is only the beginning of our story, and I promise to make every chapter worth reading.</p>
+        <p class="sign">Yours, always, Henry.</p>
+      </article>
+    </section>
+
+  </main>
+
+  <button id="musicBtn" class="music" aria-label="Pause or play music">♪</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+/* ---------- Colours (change them here) ---------- */
+:root{
+  --ink: #140d12;          /* deep plum-black */
+  --ivory: #f3ece0;        /* main text */
+  --gold: #d4b06a;         /* accent */
+  --gold-soft: rgba(212, 176, 106, 0.45);
+  --glass: rgba(20, 13, 18, 0.58);
+}
+
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+
+body{
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Background photo ---------- */
+.backdrop{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to bottom, rgba(20,13,18,0.55), rgba(20,13,18,0.82)),
+    url("background.jpg") center / cover no-repeat;
+}
+
+/* ---------- Screens ---------- */
+main{ min-height: 100dvh; }
+
+.screen{
+  display: none;
+  min-height: 100dvh;
+  padding: 32px 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.screen.active{
+  display: flex;
+  animation: reveal 1.4s ease both;
+}
+@keyframes reveal{
+  from{ opacity: 0; }
+  to{ opacity: 1; }
+}
+
+/* ---------- Typography ---------- */
+.lead{
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--gold);
+}
+.name{
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-size: clamp(4rem, 20vw, 7rem);
+  line-height: 1.1;
+  color: var(--ivory);
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+}
+.name-small{ font-size: clamp(3rem, 14vw, 4.5rem); }
+
+.ornament{
+  margin: 14px 0 28px;
+  color: var(--gold);
+  font-size: 1.6rem;
+}
+.small{
+  margin-top: 18px;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(243,236,224,0.75);
+}
+
+/* ---------- Letter card ---------- */
+.card{
+  width: 100%;
+  max-width: 460px;
+  padding: 36px 28px;
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--gold-soft);
+  outline: 1px solid var(--gold-soft);
+  outline-offset: 6px;   /* gives the classic double frame */
+  text-align: left;
+}
+#yes .card{ text-align: center; }
+
+.salutation{
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-size: 2.6rem;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  color: var(--gold);
+}
+.card p{ margin-bottom: 1.1em; }
+.question{
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--gold);
+}
+.sign{ font-style: italic; color: var(--gold); margin-top: 1.4em; }
+
+/* ---------- Buttons ---------- */
+.btn{
+  font-family: inherit;
+  font-size: 1.15rem;
+  padding: 12px 30px;
+  border: 1px solid var(--gold);
+  border-radius: 0;           /* square corners feel more classic */
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+.btn-gold{ background: var(--gold); color: var(--ink); font-weight: 500; }
+.btn-gold:hover{ background: var(--ivory); border-color: var(--ivory); }
+.btn-ghost{ background: transparent; color: var(--ivory); }
+.btn-ghost:hover{ background: rgba(212,176,106,0.15); }
+
+.actions{
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+#noReply{ text-align: center; min-height: 1.5em; }
+
+.link{
+  margin-top: 28px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--gold-soft);
+  color: var(--ivory);
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-style: italic;
+  cursor: pointer;
+  padding-bottom: 2px;
+}
+
+/* Small music toggle, bottom right */
+.music{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--glass);
+  color: var(--gold);
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: none;           /* shown once music starts */
+}
+.music.show{ display: block; }
+.music.paused{ opacity: 0.5; text-decoration: line-through; }
+
+/* ---------- Falling hearts (after she says yes) ---------- */
+.heart{
+  position: fixed;
+  top: -30px;
+  color: var(--gold);
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 5;
+}
+@keyframes fall{
+  to{ transform: translateY(110vh) rotate(40deg); opacity: 0; }
+}
+
+/* ---------- Accessibility ---------- */
+button:focus-visible{ outline: 2px solid var(--ivory); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce){
+  .screen.active{ animation: none; }
+  .heart{ display: none; }
+}
